@@ -1,0 +1,158 @@
+<h3 class="page-title">{{
+  isLoggedIn ? 'Welcome ' + education.name : 'Education Login'
+}}</h3>
+
+<div *ngIf="isCreated">
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div *ngIf="isCreated" class="alert alert-success mt-4">
+      Certification has been saved successfully!
+    </div>
+
+    <div *ngIf="!isLoggedIn && !isCreated" class="row">
+      <div class="col">
+        <form>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  [(ngModel)]="education.email"
+                  placeholder="Enter your email"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  [(ngModel)]="education.password"
+                  placeholder="Enter your password"
+                  name="password"
+                  class="form-control"
+                  id="password"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-warning" (click)="loginEducation()">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="isLoggedIn && !isCreated" class="row">
+      <div class="col">
+        <h5 class="mb-4">Add New Certification</h5>
+
+        <form>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="nationalId">National Id</label>
+                <input
+                  type="text"
+                  [(ngModel)]="certification.nationalId"
+                  name="nationalId"
+                  class="form-control"
+                  id="nationalId"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="gpa">GPA</label>
+                <input
+                  type="number"
+                  [(ngModel)]="certification.gpa"
+                  name="gpa"
+                  class="form-control"
+                  id="gpa"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="major">Major</label>
+                <input
+                  type="text"
+                  [(ngModel)]="certification.major"
+                  name="major"
+                  class="form-control"
+                  id="major"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="degree">Degree</label>
+                <input
+                  type="degree"
+                  [(ngModel)]="certification.degree"
+                  name="degree"
+                  class="form-control"
+                  id="degree"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input
+                  type="date"
+                  [(ngModel)]="certification.startDate"
+                  name="startDate"
+                  class="form-control"
+                  id="startDate"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input
+                  type="date"
+                  [(ngModel)]="certification.endDate"
+                  name="endDate"
+                  class="form-control"
+                  id="endDate"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button type="reset" class="btn btn-light mr-2">Reset</button>
+          <button type="button" class="btn btn-warning" (click)="addCertification()">Add Certification</button>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="message" class="alert alert-warning alert-dismissible mt-4">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{message}}
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col pt-4">
+
+    <p *ngIf="isLoading" class="text-muted">Loading...</p>
+
+  </div>
+</div>

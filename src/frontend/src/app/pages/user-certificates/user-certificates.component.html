@@ -1,0 +1,59 @@
+<h3 class="page-title">Find Your Certifications</h3>
+
+<div class="row">
+  <div class="col-sm-6">
+    <form>
+      <div class="form-group">
+        <label for="nationalId">National ID</label>
+        <input
+          type="text"
+          [(ngModel)]="nationalId"
+          placeholder="Enter your national id"
+          name="id"
+          class="form-control"
+          id="nationalId"
+        />
+      </div>
+
+      <button type="button" class="btn btn-warning" (click)="findCertifications()">Find</button>
+    </form>
+
+    <div *ngIf="message && !certifications.length" class="alert alert-warning alert-dismissible mt-4">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{message}}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col pt-4">
+
+    <p *ngIf="isLoading" class="text-muted">Loading...</p>
+
+    <div *ngIf="certifications.length > 0">
+      <h5 class="mb-4">Certifications of {{resultsNationalId}}:</h5>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Major</th>
+            <th>Degree</th>
+            <th>GPA</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let certification of certifications">
+            <td>{{certification.cert_id}}</td>
+            <td>{{certification.major}}</td>
+            <td>{{certification.degree}}</td>
+            <td>{{certification.gpa}}</td>
+            <td>{{certification.cert_DATE}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
